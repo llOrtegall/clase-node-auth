@@ -1,6 +1,6 @@
-import DBLocal from 'db-local'
-const { Schema } = new DBLocal({ path: '/.db' })
-import crypto from 'node: crypto'
+import DBlocal from 'db-local'
+const { Schema } = new DBlocal({ path: '/.db' })
+import crypto from 'crypto'
 
 const User = Schema('User', {
   _id: { type: String, required: true },
