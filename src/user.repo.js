@@ -1,6 +1,10 @@
-import DBlocal from 'db-local'
-const { Schema } = new DBlocal({ path: '/.db' })
 import crypto from 'crypto'
+import bycryp from 'bcrypt'
+
+import DBlocal from 'db-local'
+
+const { Schema } = new DBlocal({ path: '/.db' })
+const SALT_ROUNDS = 10
 
 const User = Schema('User', {
   _id: { type: String, required: true },
@@ -20,8 +24,9 @@ export class UserRepository {
     // 2. asegurarnos que el username no exista
     const user = User.findOne({ username })
     if (user) throw new Error('username already exists')
-
+  
     const id = crypto.randomUUID()
+    const hashedPassword = bycryp.hashSync(password, SALT_ROUNDS)
 
     User.create({
       _id: id,
