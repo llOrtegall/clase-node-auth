@@ -31,7 +31,7 @@ export class UserRepository {
     User.create({
       _id: id,
       username,
-      password
+      password: hashedPassword
 
     }).save()
 
