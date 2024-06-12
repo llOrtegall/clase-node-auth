@@ -3,7 +3,7 @@ import bycryp from 'bcrypt'
 
 import DBlocal from 'db-local'
 
-const { Schema } = new DBlocal({ path: '/.db' })
+const { Schema } = new DBlocal({ path: './db' })
 const SALT_ROUNDS = 10
 
 const User = Schema('User', {
